@@ -1,329 +1,80 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-
-  <!-- =====================================================
-       GOOGLE ANALYTICS
-  ====================================================== -->
-
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-5Q5ETQ1232"></script>
-
   <script>
     window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-
+    function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-5Q5ETQ1232');
   </script>
-
-
-  <!-- =====================================================
-       CONFIGURAÇÕES DA PÁGINA
-  ====================================================== -->
-
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
-  >
-
-  <meta
-    name="theme-color"
-    content="#111827"
-  >
-
-  <title>CogniX | Testes de Raciocínio</title>
-
-  <link
-    rel="stylesheet"
-    href="style.css"
-  >
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#111827">
+  <title>CogniX | Testes e desafios</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
-
 <body>
-
   <main class="app">
+    <section id="home" class="card tela ativa">
+      <span class="tag">COGNIX</span>
+      <h1>Escolha seu desafio</h1>
+      <p class="subtitulo">Teste seus conhecimentos em diferentes áreas e acompanhe seu desempenho por categoria.</p>
+      <div id="tiposTeste" class="grade-testes">
+        <button class="tipo-teste" data-teste="cognitivo"><span class="icone">🧠</span><strong>Cognitivo</strong><small>Lógica, padrões, sequências e raciocínio</small></button>
+        <button class="tipo-teste" data-teste="matematica"><span class="icone">➗</span><strong>Matemática</strong><small>Números, álgebra, geometria e problemas</small></button>
+        <button class="tipo-teste" data-teste="linguagens"><span class="icone">📚</span><strong>Linguagens</strong><small>Português, interpretação e comunicação</small></button>
+        <button class="tipo-teste" data-teste="ingles"><span class="icone">🇬🇧</span><strong>Inglês</strong><small>Vocabulary, grammar, reading e expressions</small></button>
+        <button class="tipo-teste" data-teste="semiotica"><span class="icone">👁️</span><strong>Semiótica</strong><small>Signos, símbolos, códigos e interpretação</small></button>
+      </div>
+      <p class="aviso">Os testes são recreativos e educacionais. Os resultados representam apenas o desempenho nas questões apresentadas.</p>
+    </section>
 
-
-    <!-- =====================================================
-         TELA INICIAL
-    ====================================================== -->
-
-    <section
-      id="inicio"
-      class="card tela ativa"
-    >
-
-      <span class="tag">
-        TESTE COGNITIVO
-      </span>
-
-      <h1>
-        CogniX
-      </h1>
-
-      <p class="subtitulo">
-        Descubra como sua mente trabalha.
-      </p>
-
-
-      <!-- NÍVEIS -->
-
+    <section id="niveis" class="card tela">
+      <div class="topo-teste"><button id="voltarHome" class="link-btn" type="button">← Testes</button><span id="tipoSelecionadoTopo"></span></div>
+      <span id="tagTipo" class="tag">TESTE</span>
+      <h2 id="tituloTipo">Escolha o nível</h2>
+      <p id="descricaoTipo" class="subtitulo"></p>
       <div class="idades">
-
-        <button
-          class="idade"
-          data-faixa="5-10"
-        >
-          <strong>Iniciantes</strong>
-          <span>Nível 1</span>
-        </button>
-
-
-        <button
-          class="idade"
-          data-faixa="11-15"
-        >
-          <strong>Médio</strong>
-          <span>Nível 2</span>
-        </button>
-
-
-        <button
-          class="idade"
-          data-faixa="16-22"
-        >
-          <strong>Avançado</strong>
-          <span>Nível 3</span>
-        </button>
-
-
-        <button
-          class="idade"
-          data-faixa="23+"
-        >
-          <strong>Expert</strong>
-          <span>Nível 4</span>
-        </button>
-
+        <button class="idade" data-faixa="5-10"><strong>Iniciante</strong><span>Nível 1</span></button>
+        <button class="idade" data-faixa="11-15"><strong>Médio</strong><span>Nível 2</span></button>
+        <button class="idade" data-faixa="16-22"><strong>Avançado</strong><span>Nível 3</span></button>
+        <button class="idade" data-faixa="23+"><strong>Expert</strong><span>Nível 4</span></button>
       </div>
-
-
-      <!-- AVISO -->
-
-      <p class="aviso">
-        Este é um teste recreativo de raciocínio e não substitui
-        uma avaliação psicológica ou um teste de QI padronizado.
-      </p>
-
+      <p class="aviso">A dificuldade aumenta progressivamente entre os níveis. Você pode fazer qualquer nível.</p>
     </section>
 
-
-
-    <!-- =====================================================
-         TELA DO TESTE
-    ====================================================== -->
-
-    <section
-      id="teste"
-      class="card tela"
-    >
-
-      <div class="topo-teste">
-
-        <button
-          id="voltar"
-          class="link-btn"
-          type="button"
-        >
-          ← Sair
-        </button>
-
-        <span id="contador">
-          Questão 1 de 20
-        </span>
-
-      </div>
-
-
-      <!-- BARRA DE PROGRESSO -->
-
-      <div class="barra">
-
-        <div id="progresso"></div>
-
-      </div>
-
-
-      <!-- CATEGORIA -->
-
-      <span
-        id="categoria"
-        class="tag"
-      ></span>
-
-
-      <!-- PERGUNTA -->
-
+    <section id="teste" class="card tela">
+      <div class="topo-teste"><button id="voltar" class="link-btn" type="button">← Sair</button><span id="contador">Questão 1</span></div>
+      <div class="contexto-teste"><span id="nomeTesteAtual"></span><span id="nomeNivelAtual"></span></div>
+      <div class="barra"><div id="progresso"></div></div>
+      <span id="categoria" class="tag"></span>
       <h2 id="pergunta"></h2>
-
-
-      <!-- ALTERNATIVAS -->
-
-      <div
-        id="alternativas"
-        class="alternativas"
-      ></div>
-
-
-      <!-- PRÓXIMA QUESTÃO -->
-
-      <button
-        id="proxima"
-        class="principal"
-        type="button"
-        disabled
-      >
-        Próxima
-      </button>
-
+      <div id="alternativas" class="alternativas"></div>
+      <button id="proxima" class="principal" type="button" disabled>Próxima</button>
     </section>
 
-
-
-    <!-- =====================================================
-         TELA DE RESULTADO
-    ====================================================== -->
-
-    <section
-      id="resultado"
-      class="card tela"
-    >
-
-      <span class="tag">
-        RESULTADO
-      </span>
-
-
-      <h2>
-        Seu desempenho
-      </h2>
-
-
-      <!-- NÍVEL REALIZADO -->
-
-      <div
-        id="nivelResultado"
-        class="nivel-resultado"
-      ></div>
-
-
-      <!-- PONTUAÇÃO GERAL -->
-
-      <div class="pontuacao">
-
-        <strong id="percentual">
-          0%
-        </strong>
-
-        <span id="acertos">
-          0 de 20 acertos
-        </span>
-
-      </div>
-
-
-      <!-- MENSAGEM DO RESULTADO -->
-
-      <div
-        id="mensagem"
-        class="mensagem"
-      ></div>
-
-
-
-      <!-- ===================================================
-           DESTAQUE COGNITIVO
-      ==================================================== -->
-
-      <div
-        id="destaqueResultado"
-        class="destaque-resultado"
-      >
-
-        <span class="tag">
-          🧠 SEU DESTAQUE
-        </span>
-
-        <h3 id="destaqueTitulo"></h3>
-
-        <p id="destaqueTexto"></p>
-
-      </div>
-
-
-
-      <!-- ===================================================
-           DESEMPENHO POR CATEGORIA
-      ==================================================== -->
-
-      <h3>
-        Desempenho por categoria
-      </h3>
-
-      <div
-        id="categoriasResultado"
-        class="resultado-categorias"
-      ></div>
-
-
-
-      <!-- ===================================================
-           NOVO TESTE
-      ==================================================== -->
-
-      <button
-        id="reiniciar"
-        class="principal"
-        type="button"
-      >
-        Fazer outro teste
-      </button>
-
-
-
-      <!-- AVISO -->
-
-      <p class="aviso">
-        A pontuação apresentada representa apenas o desempenho
-        neste conjunto de questões. Ela não corresponde a um
-        valor clínico de QI.
-      </p>
-
+    <section id="resultado" class="card tela">
+      <span class="tag">RESULTADO</span>
+      <h2>Seu desempenho</h2>
+      <div id="testeResultado" class="teste-resultado"></div>
+      <div id="nivelResultado" class="nivel-resultado"></div>
+      <div class="pontuacao"><strong id="percentual">0%</strong><span id="acertos">0 acertos</span></div>
+      <div id="mensagem" class="mensagem"></div>
+      <div id="destaqueResultado" class="destaque-resultado"><span class="tag">⭐ SEU DESTAQUE</span><h3 id="destaqueTitulo"></h3><p id="destaqueTexto"></p></div>
+      <h3>Desempenho por categoria</h3>
+      <div id="categoriasResultado" class="resultado-categorias"></div>
+      <button id="refazer" class="principal secundario" type="button">Refazer este nível</button>
+      <button id="reiniciar" class="principal" type="button">Escolher outro teste</button>
+      <p class="aviso">A pontuação representa apenas o desempenho neste conjunto de questões. No teste cognitivo, ela não corresponde a um valor clínico de QI.</p>
     </section>
-
   </main>
-
-
-
-  <!-- =======================================================
-       JAVASCRIPT
-  ======================================================== -->
-
-  <script src="perguntas.js"></script>
-
+  <script src="perguntas/cognitivo.js"></script>
+  <script src="perguntas/matematica.js"></script>
+  <script src="perguntas/linguagens.js"></script>
+  <script src="perguntas/ingles.js"></script>
+  <script src="perguntas/semiotica.js"></script>
   <script src="script.js"></script>
-
-
 </body>
-
 </html>
