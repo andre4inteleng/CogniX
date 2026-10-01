@@ -1,60 +1,329 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
+  <!-- =====================================================
+       GOOGLE ANALYTICS
+  ====================================================== -->
+
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-5Q5ETQ1232"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5Q5ETQ1232"></script>
 
-  gtag('config', 'G-5Q5ETQ1232');
-</script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-5Q5ETQ1232');
+  </script>
+
+
+  <!-- =====================================================
+       CONFIGURAÇÕES DA PÁGINA
+  ====================================================== -->
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="theme-color" content="#111827">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  >
+
+  <meta
+    name="theme-color"
+    content="#111827"
+  >
+
   <title>CogniX | Testes de Raciocínio</title>
-  <link rel="stylesheet" href="style.css">
+
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
+
 </head>
+
+
 <body>
+
   <main class="app">
-    <section id="inicio" class="card tela ativa">
-      <span class="tag">TESTE COGNITIVO</span>
-      <h1>CogniX</h1>
-      <p class="subtitulo">Descubra como sua mente trabalha.</p>
+
+
+    <!-- =====================================================
+         TELA INICIAL
+    ====================================================== -->
+
+    <section
+      id="inicio"
+      class="card tela ativa"
+    >
+
+      <span class="tag">
+        TESTE COGNITIVO
+      </span>
+
+      <h1>
+        CogniX
+      </h1>
+
+      <p class="subtitulo">
+        Descubra como sua mente trabalha.
+      </p>
+
+
+      <!-- NÍVEIS -->
+
       <div class="idades">
-        <button class="idade" data-faixa="5-10"><strong>5–10</strong><span>anos</span></button>
-        <button class="idade" data-faixa="11-15"><strong>11–15</strong><span>anos</span></button>
-        <button class="idade" data-faixa="16-22"><strong>16–22</strong><span>anos</span></button>
-        <button class="idade" data-faixa="23+"><strong>23+</strong><span>anos</span></button>
+
+        <button
+          class="idade"
+          data-faixa="5-10"
+        >
+          <strong>Iniciantes</strong>
+          <span>Nível 1</span>
+        </button>
+
+
+        <button
+          class="idade"
+          data-faixa="11-15"
+        >
+          <strong>Médio</strong>
+          <span>Nível 2</span>
+        </button>
+
+
+        <button
+          class="idade"
+          data-faixa="16-22"
+        >
+          <strong>Avançado</strong>
+          <span>Nível 3</span>
+        </button>
+
+
+        <button
+          class="idade"
+          data-faixa="23+"
+        >
+          <strong>Expert</strong>
+          <span>Nível 4</span>
+        </button>
+
       </div>
-      <p class="aviso">Este é um teste recreativo de raciocínio e não substitui uma avaliação psicológica ou um teste de QI padronizado.</p>
+
+
+      <!-- AVISO -->
+
+      <p class="aviso">
+        Este é um teste recreativo de raciocínio e não substitui
+        uma avaliação psicológica ou um teste de QI padronizado.
+      </p>
+
     </section>
 
-    <section id="teste" class="card tela">
+
+
+    <!-- =====================================================
+         TELA DO TESTE
+    ====================================================== -->
+
+    <section
+      id="teste"
+      class="card tela"
+    >
+
       <div class="topo-teste">
-        <button id="voltar" class="link-btn" type="button">← Sair</button>
-        <span id="contador">Questão 1 de 20</span>
+
+        <button
+          id="voltar"
+          class="link-btn"
+          type="button"
+        >
+          ← Sair
+        </button>
+
+        <span id="contador">
+          Questão 1 de 20
+        </span>
+
       </div>
-      <div class="barra"><div id="progresso"></div></div>
-      <span id="categoria" class="tag"></span>
+
+
+      <!-- BARRA DE PROGRESSO -->
+
+      <div class="barra">
+
+        <div id="progresso"></div>
+
+      </div>
+
+
+      <!-- CATEGORIA -->
+
+      <span
+        id="categoria"
+        class="tag"
+      ></span>
+
+
+      <!-- PERGUNTA -->
+
       <h2 id="pergunta"></h2>
-      <div id="alternativas" class="alternativas"></div>
-      <button id="proxima" class="principal" type="button" disabled>Próxima</button>
+
+
+      <!-- ALTERNATIVAS -->
+
+      <div
+        id="alternativas"
+        class="alternativas"
+      ></div>
+
+
+      <!-- PRÓXIMA QUESTÃO -->
+
+      <button
+        id="proxima"
+        class="principal"
+        type="button"
+        disabled
+      >
+        Próxima
+      </button>
+
     </section>
 
-    <section id="resultado" class="card tela">
-      <span class="tag">RESULTADO</span>
-      <h2>Seu desempenho</h2>
-      <div class="pontuacao"><strong id="percentual">0%</strong><span id="acertos">0 de 20 acertos</span></div>
-      <div id="mensagem" class="mensagem"></div>
-      <h3>Desempenho por categoria</h3>
-      <div id="categoriasResultado" class="resultado-categorias"></div>
-      <button id="reiniciar" class="principal" type="button">Fazer outro teste</button>
-      <p class="aviso">A pontuação apresentada representa apenas o desempenho neste conjunto de questões. Ela não corresponde a um valor clínico de QI.</p>
+
+
+    <!-- =====================================================
+         TELA DE RESULTADO
+    ====================================================== -->
+
+    <section
+      id="resultado"
+      class="card tela"
+    >
+
+      <span class="tag">
+        RESULTADO
+      </span>
+
+
+      <h2>
+        Seu desempenho
+      </h2>
+
+
+      <!-- NÍVEL REALIZADO -->
+
+      <div
+        id="nivelResultado"
+        class="nivel-resultado"
+      ></div>
+
+
+      <!-- PONTUAÇÃO GERAL -->
+
+      <div class="pontuacao">
+
+        <strong id="percentual">
+          0%
+        </strong>
+
+        <span id="acertos">
+          0 de 20 acertos
+        </span>
+
+      </div>
+
+
+      <!-- MENSAGEM DO RESULTADO -->
+
+      <div
+        id="mensagem"
+        class="mensagem"
+      ></div>
+
+
+
+      <!-- ===================================================
+           DESTAQUE COGNITIVO
+      ==================================================== -->
+
+      <div
+        id="destaqueResultado"
+        class="destaque-resultado"
+      >
+
+        <span class="tag">
+          🧠 SEU DESTAQUE
+        </span>
+
+        <h3 id="destaqueTitulo"></h3>
+
+        <p id="destaqueTexto"></p>
+
+      </div>
+
+
+
+      <!-- ===================================================
+           DESEMPENHO POR CATEGORIA
+      ==================================================== -->
+
+      <h3>
+        Desempenho por categoria
+      </h3>
+
+      <div
+        id="categoriasResultado"
+        class="resultado-categorias"
+      ></div>
+
+
+
+      <!-- ===================================================
+           NOVO TESTE
+      ==================================================== -->
+
+      <button
+        id="reiniciar"
+        class="principal"
+        type="button"
+      >
+        Fazer outro teste
+      </button>
+
+
+
+      <!-- AVISO -->
+
+      <p class="aviso">
+        A pontuação apresentada representa apenas o desempenho
+        neste conjunto de questões. Ela não corresponde a um
+        valor clínico de QI.
+      </p>
+
     </section>
+
   </main>
+
+
+
+  <!-- =======================================================
+       JAVASCRIPT
+  ======================================================== -->
+
   <script src="perguntas.js"></script>
+
   <script src="script.js"></script>
+
+
 </body>
+
 </html>
